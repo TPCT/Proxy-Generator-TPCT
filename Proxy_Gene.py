@@ -10,12 +10,76 @@ class TPCT_PROXY_GENE:
     |_|   |____/ |____/ \___/ |_|    |_| |_|    \____| |_|
                                                           '''
 
+    def __init__(self):
+        self.proxy_gene()
+        self.Installer
+        self.plateform_check()
+
+    class Installer:
+        import os, shutil
+        def __init__(self):
+            self.Admin_Rights()
+            self.Import_Checker()
+
+        def Admin_Rights(self):
+            try:
+                import os, sys, platform
+                if str(platform.system()).lower().startswith('linux'):
+                    open('/etc/Mod', 'w+')
+                    os.unlink('/etc/Mod')
+                elif str(platform.system()).lower().startswith('windows'):
+                    open('c:/Mod', 'w+')
+                    os.unlink('c:/Mod')
+                else:
+                    open('/etc/Mod', 'w+')
+                    os.unlink('/etc/Mod')
+            except KeyboardInterrupt as e:
+                self.os._exit(1)
+            except Exception as e:
+                e = e.args
+                if e[0] == 13:
+                    print('[+] Sorry You Need To Use Script As Admin Script Will Exit')
+                    sys.exit(1)
+                else:
+                    pass
+
+        def Import_Checker(self):
+            try:
+                __import__('imp').find_module('robobrowser')
+            except ImportError:
+                import pip
+                pip.main(['install', 'robobrowser'])
+                pass
+
+    import time, random, re, string, sys, warnings, os, pip, traceback, math, getpass, pickle, \
+        signal, platform, pickle, robobrowser, requests, tarfile, zipfile
+    from robobrowser import RoboBrowser
+    browser = ''
+    Browser = ''
+
+    def plateform_check(self):
+        if str(self.platform.system()).lower().startswith('linux'):
+            browser = self.RoboBrowser(
+                user_agent='Mozilla/5.0 (Macintosh; PPC Mac OS X x.y; rv:10.0) Gecko/20100101 Firefox/10.0',
+                multiplier=True,
+                allow_redirects=True, history=True, parser='lxml')
+            self.browser = browser
+        elif str(self.platform.system()).lower().startswith('windows'):
+            browser = self.RoboBrowser(
+                user_agent='Mozilla/5.0 (Macintosh; PPC Mac OS X x.y; rv:10.0) Gecko/20100101 Firefox/10.0',
+                multiplier=True,
+                allow_redirects=True, history=True, parser='html.parser')
+            self.browser = browser
+        else:
+            browser = self.RoboBrowser(
+                user_agent='Mozilla/5.0 (Macintosh; PPC Mac OS X x.y; rv:10.0) Gecko/20100101 Firefox/10.0',
+                multiplier=True,
+                allow_redirects=True, history=True, parser='lxml')
+            self.browser = browser
     UserAgents = ['Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1',
                   'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.3) Gecko/20100409 Firefox/3.6.3 CometBird/3.6.3']
     browser = RoboBrowser(history=True, user_agent=UserAgents[random.randint(0, len(UserAgents) - 1)],
                            multiplier=True, parser='lxml')
-    def __init__(self):
-        self.proxy_gene()
 
     def proxy_gene(self):
         self.browser.open('https://www.hide-my-ip.com/proxylist.shtml')
@@ -117,6 +181,7 @@ class TPCT_PROXY_GENE:
                 pass
         proxy_info = proxy_info.split("\n")
         self.random.shuffle(proxy_info)
-        return proxy_info
+        for proxy in proxy_info:
+            open('proxies.list', 'w+').write(str(proxy)+"\n")
 
 TPCT_PROXY_GENE()
