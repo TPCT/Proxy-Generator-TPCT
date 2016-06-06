@@ -168,6 +168,6 @@ class TPCT_PROXY_GENE:
         proxy_info = proxy_info.split("\n")
         self.random.shuffle(proxy_info)
         for proxy in proxy_info:
-            open('proxies.list', 'w+').write(str(proxy)+"\n")
+            open('proxies.list', 'a+').write(str(proxy)+"\n")
 
 TPCT_PROXY_GENE()
