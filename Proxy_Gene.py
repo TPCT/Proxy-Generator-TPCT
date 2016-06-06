@@ -1,19 +1,9 @@
 class TPCT_PROXY_GENE:
-    import random, requests.sessions, requests
-    from robobrowser import RoboBrowser
-    import threading
-    '''
-     _____ ____   ____   ___ _____  _____ ____   ____ _____
-    |  ___| __ ) | __ ) / _ \_   _ |_   _|  _ \ / ___|_   _|
-    | |_  |  _ \ |  _ \| | | || |    | | | |_) | |     | |
-    |  _| | |_)  | |_) | |_| || |    | | |  __/| |___  | |
-    |_|   |____/ |____/ \___/ |_|    |_| |_|    \____| |_|
-                                                          '''
 
     def __init__(self):
-        self.proxy_gene()
-        self.Installer
+        self.Installer()
         self.plateform_check()
+        self.proxy_gene()
 
     class Installer:
         import os, shutil
@@ -50,36 +40,32 @@ class TPCT_PROXY_GENE:
                 import pip
                 pip.main(['install', 'robobrowser'])
                 pass
-
-    import time, random, re, string, sys, warnings, os, pip, traceback, math, getpass, pickle, \
-        signal, platform, pickle, robobrowser, requests, tarfile, zipfile
-    from robobrowser import RoboBrowser
+    import platform,random,string
     browser = ''
     Browser = ''
 
     def plateform_check(self):
+        from robobrowser import RoboBrowser
         if str(self.platform.system()).lower().startswith('linux'):
-            browser = self.RoboBrowser(
+            browser = RoboBrowser(
                 user_agent='Mozilla/5.0 (Macintosh; PPC Mac OS X x.y; rv:10.0) Gecko/20100101 Firefox/10.0',
                 multiplier=True,
                 allow_redirects=True, history=True, parser='lxml')
             self.browser = browser
         elif str(self.platform.system()).lower().startswith('windows'):
-            browser = self.RoboBrowser(
+            browser = RoboBrowser(
                 user_agent='Mozilla/5.0 (Macintosh; PPC Mac OS X x.y; rv:10.0) Gecko/20100101 Firefox/10.0',
                 multiplier=True,
                 allow_redirects=True, history=True, parser='html.parser')
             self.browser = browser
         else:
-            browser = self.RoboBrowser(
+            browser = RoboBrowser(
                 user_agent='Mozilla/5.0 (Macintosh; PPC Mac OS X x.y; rv:10.0) Gecko/20100101 Firefox/10.0',
                 multiplier=True,
                 allow_redirects=True, history=True, parser='lxml')
             self.browser = browser
     UserAgents = ['Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1',
                   'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.3) Gecko/20100409 Firefox/3.6.3 CometBird/3.6.3']
-    browser = RoboBrowser(history=True, user_agent=UserAgents[random.randint(0, len(UserAgents) - 1)],
-                           multiplier=True, parser='lxml')
 
     def proxy_gene(self):
         self.browser.open('https://www.hide-my-ip.com/proxylist.shtml')
